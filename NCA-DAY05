@@ -1,0 +1,47 @@
+NCA 정보보안 교육 과정: 모의고사 및 문제풀이 정리
+
+일정: 2026년 2월 11일(수) 13:00~19:00
+내용: NCP Security 및 인프라 보안 관련 모의시험 3회 실시 및 심층 풀이
+
+📘 Chapter 1: NCP-Security 및 일반 보안 (NCP-Security CSP사 문제 구성)
+클라우드 보안 솔루션의 기능과 리눅스/네트워크 보안의 기초를 다루는 섹션.
+
+- 주요 보안 솔루션 및 기능
+  - App Safer: 모바일 앱 역분석 방지를 위한 난독화(Obfuscation) 기술 적용. (스피드핵, 메모리 변조, 디버깅 탐지 등 지원) 
+  - Webshell Behavior Detector: 미리 정의된 패턴 및 행위 기반으로 실시간 웹쉘 탐지.
+  - Web Security Checker: 웹 서비스의 잠재적 취약점(SQL Injection, XSS, SSRF 등)을 진단하고 대응 가이드 리포트 제공.
+  - File Safer: 서비스 내 파일 및 아웃링크의 악성 여부 검사. Hash Filter와 실행 보류(File Filter) 방식 제공.
+
+- 시스템 및 인프라 보안
+  - TCP Flag: CWR, URG, PSH, ACK, SYN, FIN, RST 등이 있으며, CTS(Clear to Send)는 해당하지 않음.
+  - Syn Flooding: 다량의 SYN 패킷으로 서버 리소스를 고갈시키는 DDoS 공격. iptables의 limit 옵션으로 방어 가능.
+  - 리눅스 권한 관리: SetUID가 설정된 파일의 퍼미션 숫자 표현(예: -rwsrwsrwx는 6777) 및 패스워드 정책(ucredit, dcredit 등) 설정법.
+
+🌐 Chapter 2: Well-Known Port 및 기본 서비스인프라 설정 시 필수적으로 숙지해야 할 주요 포트 번호.
+ 서비스명  포트 번호  프로토콜             용도
+  FTP      20,21      TCP          제어 및 데이터 전송 
+  SSH       22        TCP            보안 원격 접속 
+  Telnet    23        TCP            터미널 접속 
+  SMTP      25        TCP            전자우편 송신 
+  DNS       53       TCP/UDP         도메인 네임 서버 
+  HTTP      80        TCP            웹 서비스 
+  HTTPS     443       TCP            보안 웹 통신 
+  MySQL     3306      TCP          데이터베이스 서비스 
+  MS-SQL    1433      TCP          데이터베이스 서비스 
+  RDP       3389       TCP         윈도우 원격 데스크톱 
+
+☁️ Chapter 3: NCP 보안 상품 및 VPC 네트워크 구성
+실무적인 클라우드 아키텍처 보안 구성과 관련된 내용
+- VPC 네트워크 보안
+  - ACG(Access Control Group): 서버/네트워크 인터페이스(NIC) 단위 방화벽. 규칙이 없으면 All Deny가 기본.
+  - NACL(Network ACL): 서브넷 단위 방화벽으로 우선순위 설정 가능.
+  - NAT Gateway: Private Subnet 내 서버가 외부 인터넷에서 패키지 등을 다운로드하기 위해 필요한 아웃바운드 전용 통로.
+- 인증 및 접속 보안
+  - SSL VPN: 외부에서 VPC 내부 망에 안전하게 접속하기 위해 사용. OTP 인증을 지원하며 전용 Client 프로그램 설치 필요.
+  - Certificate Manager: SSL/TLS 인증서를 등록·관리하며, Load Balancer나 CDN 상품과 연동하여 보안 통신 구현.
+
+
+- 느낀점
+nca과정 마지막 날에 진행된 3차례의 모의시험을 통해 그동안 파편화되어 있던 지식들이 하나의 흐름으로 정리되는 것을 느꼈다.
+단순히 포트 번호 암기를 넘어 실제 인프라 환경에서 ACG, NACL이 어떻게 계층적으로 방어 체계를 구축하는지 실무적인 관점에서 이해할 수 있었던 귀중한 시간이었다.
+조만간 NCP 공인 자격증 취득에 도전해서 클라우드 보안 환경을 누구보다 잘 이해하고 다룰 줄 아는 사람이 되고싶다.
